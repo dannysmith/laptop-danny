@@ -6,6 +6,11 @@ To configure and install a new laptop...
 xcode-select --install # Install command line tools
 ```
 
+https://gist.github.com/dannysmith/10165702
+https://gist.github.com/dannysmith/9369950
+https://gist.github.com/dannysmith/8821178
+https://github.com/dghubble/phoenix
+
 TODO:
 
 * Software update
@@ -27,5 +32,6 @@ TODO:
 * Clone other bits (like sparta workstation) down
 * What else can I automate?
 * Automaticually licence things like Sketch, Omnifocus, Bartender and Alfred etc
+* Add check for software already installed
 
 **NOTE: KEEP ADDING TO THIS WHEN I INSTALL NEW SOFTWARE**
