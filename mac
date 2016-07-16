@@ -1,0 +1,20 @@
+#!/bin/sh
+fancy_echo() {
+  local fmt="$1"; shift
+
+  printf "\n$fmt\n" "$@"
+}
+
+fancy_echo "Welcome to Danny's macOS Installer"
+echo "-------------------------------------"
+echo
+
+# Get admin password & store in $passwd
+echo -n "Admin Password: "
+stty -echo
+read passwd
+stty echo
+echo
+
+source macos.sh
+source ruby.sh
