@@ -42,9 +42,16 @@ fancy_echo "Running VimPlug Commands..."
 vim :silent! +PlugInstall +qall
 vim :silent! +PlugClean +qall
 
+# Configure sublime text
+source sublime.sh
+
 # Run mac-specific scripts.
 source macos.sh
 source macos-applescripts.sh
 
 # Change Shell to zsh
 chsh -s "$(which zsh)"
+
+# Open Dropbox & Evernote to Login and Start Sync
+open /Applications/Dropbox.app
+open /Applications/Evernote.app
