@@ -42,6 +42,7 @@ brew 'grep'
 brew 'keybase'
 brew 'tree'
 brew 'tor'
+brew 'diff-so-fancy'
 
 # Heroku & GitHub
 brew 'heroku-toolbelt'
