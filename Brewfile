@@ -77,6 +77,9 @@ brew "mysql", restart_service: true
 # Automation
 brew "chromedriver"
 
+# Mac Stuff
+brew 'mas'
+
 # Cask QL Plugins
 cask 'betterzipql'
 cask 'qlcolorcode'
@@ -97,7 +100,6 @@ cask 'font-source-sans-pro'
 # Apps
 cask '1password'
 cask 'alfred'
-cask 'alternote'
 cask 'adobe-reader'
 cask 'whatsapp'
 cask 'appcleaner'
@@ -149,8 +151,6 @@ cask 'colorpicker'
 cask 'iboostup'
 cask 'imagealpha'
 cask 'imageoptim'
-cask 'kaleidoscope'
-cask 'mindnode-pro'
 cask 'microsoft-office'
 cask 'omnifocus'
 cask 'omnifocus-clip-o-tron'

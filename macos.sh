@@ -1,13 +1,10 @@
-
-EMAIL='hi@danny.is'
-
 ###############################################################################
 # Profile Image                                                               #
 ###############################################################################
 
 # Set Profile Picture
 fancy_echo "Fetching Gravatar..."
-HASH=`echo -n $EMAIL | awk '{print tolower($0)}' | tr -d '\n ' | md5sum --text | tr -d '\- '`
+HASH=`echo -n $email | awk '{print tolower($0)}' | tr -d '\n ' | md5sum --text | tr -d '\- '`
 URL="http://www.gravatar.com/avatar/$HASH?s=512&d=404"
 curl -s $URL > $HOME/Pictures/avatar.jpg
 
@@ -67,6 +64,8 @@ for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
     "/System/Library/CoreServices/Menu Extras/TextInput.menu"
 done
 
+fancy_echo "Configuring Mac Settings..."
+
 # Increase window resize speed for Cocoa applications
 defaults write -g NSWindowResizeTime -float 0.001
 
@@ -98,6 +97,8 @@ echo $passwd | sudo -S -k csrutil disable
 # Keyboard, mouse and Bluetooth                                               #
 ###############################################################################
 
+fancy_echo "Configuring Keyboard, mouse and bluetooth..."
+
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
@@ -121,6 +122,8 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 # Screen                                                                      #
 ###############################################################################
 
+fancy_echo "Configuring screen settings..."
+
 # Save screenshots to the desktop
 defaults write com.apple.screencapture location -string "${HOME}/Desktop"
 
@@ -136,6 +139,8 @@ sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutio
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
+
+fancy_echo "Configuring finder..."
 
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
 defaults write com.apple.finder QuitMenuItem -bool true
@@ -209,6 +214,8 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
 
+fancy_echo "Configuring Dock and Mission Control..."
+
 # Disable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilite-stack -bool false
 
@@ -236,6 +243,8 @@ defaults write com.apple.dock showhidden -bool true
 ###############################################################################
 # Safari & WebKit                                                             #
 ###############################################################################
+
+fancy_echo "Configuring Safari..."
 
 # Set Safari’s home page to `about:blank` for faster loading
 defaults write com.apple.Safari HomePage -string "about:blank"
@@ -267,6 +276,8 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 # Mail                                                                        #
 ###############################################################################
 
+fancy_echo "Configuring Mail.app..."
+
 # Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
 defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
@@ -282,6 +293,8 @@ defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -stri
 # Time Machine                                                                #
 ###############################################################################
 
+fancy_echo "Switching off Time Machine..."
+
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
@@ -291,6 +304,8 @@ hash tmutil &> /dev/null && sudo tmutil disablelocal
 ###############################################################################
 # Activity Monitor                                                            #
 ###############################################################################
+
+fancy_echo "Configuring Activity Monitor..."
 
 # Show the main window when launching Activity Monitor
 defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
@@ -308,6 +323,8 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 ###############################################################################
 # Address Book, TextEdit, and Disk Utility, App Store and Messages            #
 ###############################################################################
+
+fancy_echo "Switching Address Book, TextEdit, Disk Utility, App store and Messages..."
 
 # Enable the debug menu in Address Book
 defaults write com.apple.addressbook ABShowDebugMenu -bool true
@@ -357,3 +374,4 @@ echo $passwd | sudo -S -k launchctl load -w /System/Library/LaunchDaemons/com.ap
 echo $passwd | sudo -S -k /usr/libexec/locate.updatedb
 echo "Finished building locate database"
 
+green_echo "Done with macOS config!"

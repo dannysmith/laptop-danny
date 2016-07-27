@@ -1,53 +1,80 @@
-#!/bin/sh
+#!/bin/bash
+
+dotfiles_repo="http://github.com/dannysmith/dotfiles"
+sublime_packages_repo="https://github.com/dannysmith/sublime-packages-user"
+
 fancy_echo() {
   local fmt="$1"; shift
-
-  printf "\n$fmt\n" "$@"
+  printf "\n\e[95m$fmt\e[97m\n\n" "$@"
 }
 
-fancy_echo "Welcome to Danny's macOS Installer"
-echo "-------------------------------------"
+green_echo() {
+  local fmt="$1"; shift
+  printf "\n\e[92m$fmt\e[97m\n" "$@"
+}
+
+input_echo() {
+  local fmt="$1"; shift
+  printf "\e[33m$fmt\e[97m " "$@"
+}
+
+echo "Welcome to Danny's macOS Installer"
+echo "----------------------------------"
 echo
 
-# Get admin password & store in $passwd
-echo -n "Admin Password: "
-stty -echo
+# Get admin password, email and mac app store passwords
+input_echo "Email Address: "
+read email
+
+stty -echo # Switch off echoing back text
+
+input_echo "Laptop Admin Password: "
 read passwd
-stty echo
 echo
 
-# Run homebrew and ruby scripts
+input_echo "Apple ID Password: "
+read apple_passwd
+stty echo # Switch on echoing back text
+echo
+echo
+
+fancy_echo "-------------------------------------"
+input_echo "Email:"
+echo $email
+input_echo "Dotfiles repo:"
+echo $dotfiles_repo
+input_echo "Sublime Text Packages repo:"
+echo $sublime_packages_repo
+fancy_echo "-------------------------------------"
+
+echo "Running install scripts..."
+
+# Run homebrew Script to install software and dependencies
 source brew.sh
+
+# Run robu script to install rbenv and latest ruby
 source ruby.sh
 
-# Update NVM / Node etc
-fancy_echo "Updating NVM/NPM..."
+# Run npm install script
+source node.sh
 
-nvm install latest
-nvm -v
-
-npm update npm -g
-npm update -g
-
-# Install dotfiles
-fancy_echo "Installing dotfiles..."
-git clone http://github.com/dannysmith/dotfiles $HOME/.dotfiles
-cd $HOME && rcup
+# Install Dotfiles
+source dotfiles.sh
 
 # Vim Plugins
-echo "Installing Vim Plugins..."
-curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fancy_echo "Running VimPlug Commands..."
-
-vim :silent! +PlugInstall +qall
-vim :silent! +PlugClean +qall
+source vim.sh
 
 # Configure sublime text
 source sublime.sh
 
 # Run mac-specific scripts.
 source macos.sh
+source macos-appstore.sh
 source macos-applescripts.sh
+
+echo "-------------------------------------"
+green_echo "💃  Done provisioning laptop!"
+echo
 
 # Change Shell to zsh
 chsh -s "$(which zsh)"
@@ -55,3 +82,6 @@ chsh -s "$(which zsh)"
 # Open Dropbox & Evernote to Login and Start Sync
 open /Applications/Dropbox.app
 open /Applications/Evernote.app
+
+# Open Chrome to sign into google accounts
+open /Applications/Google\ Chrome.app

@@ -48,4 +48,5 @@ brew cleanup
 brew cask cleanup
 brew doctor
 
+green_echo "Done with homebrew installs!"
 
