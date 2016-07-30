@@ -1,6 +1,8 @@
 # Find App ID numbers with `mas search "appname"`.
 
 fancy_echo "Installing Mac App Store Apps.."
+mas signout
+mas signin $email "$apple_passwd"
 
 mas install 992076693 # Mndnote 2
 mas install 974971992 # Alternote
