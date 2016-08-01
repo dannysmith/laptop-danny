@@ -79,6 +79,7 @@ brew "chromedriver"
 
 # Mac Stuff
 brew 'mas'
+brew 'm-cli'
 
 # Cask QL Plugins
 cask 'betterzipql'
