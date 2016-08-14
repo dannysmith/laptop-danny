@@ -8,7 +8,6 @@ slep 2
 osascript <<EOD
   tell application "Terminal"
     set default settings to settings set "DannyPro"
-    activate
   end tell
 EOD
 
