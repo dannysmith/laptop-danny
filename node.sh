@@ -8,6 +8,6 @@ npm update -g
 
 fancy_echo "Istalling global NPM packages..."
 
-npm install -g gitbook-cli grunt-cli pryjs nodemon
+npm install -g gitbook-cli grunt-cli pryjs nodemon browser-sync
 
 green_echo "Done with Node/NPM installs!"
