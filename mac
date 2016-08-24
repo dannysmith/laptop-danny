@@ -52,14 +52,14 @@ echo "Running install scripts..."
 # Run homebrew Script to install software and dependencies
 source brew.sh
 
+# Install Dotfiles
+source dotfiles.sh
+
 # Run robu script to install rbenv and latest ruby
 source ruby.sh
 
 # Run npm install script
 source node.sh
-
-# Install Dotfiles
-source dotfiles.sh
 
 # Vim Plugins
 source vim.sh
