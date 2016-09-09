@@ -91,6 +91,7 @@ esac
 # Open Dropbox & Evernote to Login and Start Sync
 open /Applications/Dropbox.app
 open /Applications/Evernote.app
+open /Applications/1Password.app
 
 # Open Chrome to sign into google accounts
 open /Applications/Google\ Chrome.app

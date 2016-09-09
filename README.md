@@ -12,28 +12,26 @@ chmod +x ./mac
 ./mac
 ```
 
-https://github.com/dghubble/phoenix
+<https://github.com/dghubble/phoenix>
 
 Manual Steps:
 
-* Log into Dropbox and Evernote and begin sync
-* Open Kaleidoscope Preferences and install the `ksdiff` command line tool
-* Install [Craft for Sketch](https://www.invisionapp.com/craft)
-
+- Log into Dropbox and Evernote and begin sync
+- Open Kaleidoscope Preferences and install the `ksdiff` command line tool
+- Install [Craft for Sketch](https://www.invisionapp.com/craft)
 
 TODO:
 
-* Set up zsh & oh-my-zsh properly
-* Configure as many apps as possible via command line
-* Run dropbox sync
-* Clone sparta workstation down
-* Automaticually licence non MAS apps:
-    * Sketch
-    * Omnifocus
-    * Bartender
-    * Alfred
-    * 1Password
-    * iStat Menus
-* Add checks for software already installed
+- Set up zsh & oh-my-zsh properly
+- Automaticually licence non MAS apps:
+
+  - Sketch
+  - Omnifocus
+  - Bartender
+  - Alfred
+  - 1Password
+  - iStat Menus
+
+- Add checks for software already installed
 
 **NOTE: KEEP ADDING TO THIS WHEN I INSTALL NEW SOFTWARE**
