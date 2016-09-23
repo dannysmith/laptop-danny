@@ -113,8 +113,7 @@ defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
 # Set faster Key Repeat
-defaults write -g KeyRepeat -int 0
-
+defaults write -g KeyRepeat -float 0.000000000001
 # Disable press-and-hold and enable KeyRepeat instead
 defaults write -g ApplePressAndHoldEnabled -bool false
 
