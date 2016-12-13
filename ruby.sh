@@ -19,6 +19,8 @@ fancy_echo "Configuring rbenv..."
 # append_to_zshrc 'eval "$(rbenv init - --no-rehash)"' 1
 eval "$(rbenv init -)"
 
+green_echo "done."
+
 # Set Default rubygems to include in all ruby installations via rbenv
 fancy_echo "Setting default gems..."
 
@@ -32,9 +34,12 @@ awesome_print
 specific_install
 EOF
 
+green_echo "done."
+
 if ! rbenv versions | grep -Fq "$ruby_version"; then
   fancy_echo "Installing ruby $ruby_version..."
   RUBY_CONFIGURE_OPTS=--with-openssl-dir=/usr/local/opt/openssl rbenv install -s "$ruby_version"
+  green_echo "done."
 fi
 
 fancy_echo "Updating gems..."
@@ -47,8 +52,12 @@ gem_install_or_update 'pry'
 gem_install_or_update 'pry-doc'
 gem_install_or_update 'awesome_print'
 
+green_echo "done."
+
 fancy_echo "Configuring bundler..."
 number_of_cores=$(sysctl -n hw.ncpu)
 bundle config --global jobs $((number_of_cores - 1))
+
+green_echo "done."
 
 green_echo "Done with ruby installs and config!"

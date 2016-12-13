@@ -15,6 +15,8 @@ echo $passwd | sudo -S -k dscl . -delete /Users/$USER JPEGPhoto
 echo $passwd | sudo -S -k dsimport $HOME/avatar_import.txt /Local/Default M -u diradmin
 rm -f $HOME/avatar_import.txt
 
+green_echo "done."
+
 fancy_echo "Adding Terminal to allowed assistive devices..."
 # Install tccutil and add terminal to list of allowed assistive devices
 curl -Os https://raw.githubusercontent.com/jacobsalmela/tccutil/master/tccutil.py
@@ -22,6 +24,8 @@ echo $passwd | sudo -S -k python ./tccutil.py --verbose --insert com.apple.Termi
 
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
+
+green_echo "done."
 
 ###############################################################################
 # Install MySQL WorkBench                                                     #
@@ -35,6 +39,8 @@ yes | hdiutil attach -noverify -nobrowse -mountpoint $temp/mount $temp/1.dmg
 cp -r $temp/mount/*.app /Applications
 hdiutil detach $temp/mount
 rm -rf $temp
+
+green_echo "done."
 
 
 ###############################################################################
@@ -64,6 +70,8 @@ for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
     "/System/Library/CoreServices/Menu Extras/TextInput.menu"
 done
 
+green_echo "done."
+
 fancy_echo "Configuring Mac Settings..."
 
 # Increase window resize speed for Cocoa applications
@@ -92,6 +100,7 @@ echo $passwd | sudo -S -k spctl --master-disable
 # Disable System Integrity Protection (rootless)
 echo $passwd | sudo -S -k csrutil disable
 
+green_echo "done."
 
 ###############################################################################
 # Keyboard, mouse and Bluetooth                                               #
@@ -118,6 +127,8 @@ defaults write -g InitialKeyRepeat -integer 15
 # Disable press-and-hold and enable KeyRepeat instead
 defaults write -g ApplePressAndHoldEnabled -bool false
 
+green_echo "done."
+
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
@@ -135,6 +146,8 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
 # Enable HiDPI display modes (requires restart)
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+
+green_echo "done."
 
 ###############################################################################
 # Finder                                                                      #
@@ -210,6 +223,8 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
   OpenWith -bool true \
   Privileges -bool true
 
+green_echo "done."
+
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
@@ -239,6 +254,8 @@ defaults write com.apple.dock autohide -bool true
 
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
+
+green_echo "done."
 
 ###############################################################################
 # Safari & WebKit                                                             #
@@ -272,6 +289,8 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Add a context menu item for showing the Web Inspector in web views
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
+green_echo "done."
+
 ###############################################################################
 # Mail                                                                        #
 ###############################################################################
@@ -289,6 +308,8 @@ defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreade
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
 
+green_echo "done."
+
 ###############################################################################
 # Time Machine                                                                #
 ###############################################################################
@@ -300,6 +321,8 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disable local Time Machine backups
 hash tmutil &> /dev/null && sudo tmutil disablelocal
+
+green_echo "done."
 
 ###############################################################################
 # Activity Monitor                                                            #
@@ -319,6 +342,8 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 # Sort Activity Monitor results by CPU usage
 defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0
+
+green_echo "done."
 
 ###############################################################################
 # Address Book, TextEdit, and Disk Utility, App Store and Messages            #
@@ -352,12 +377,16 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # Reset Launchpad
 find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
 
+green_echo "done."
+
 ###############################################################################
 # Finishing Up                                                                #
 ###############################################################################
 
 fancy_echo "Rebuilding font cache..."
 echo $passwd | sudo -S -k atsutil databases -remove
+
+green_echo "done."
 
 # Restart affected apps
 fancy_echo "Restarting affected apps..."
@@ -368,10 +397,14 @@ for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
 done
 open /System/Library/CoreServices/Finder.app
 
+green_echo "done."
+
 # Build locate database
 fancy_echo "Building locate database..."
 echo $passwd | sudo -S -k launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
 echo $passwd | sudo -S -k /usr/libexec/locate.updatedb
 echo "Finished building locate database"
+
+green_echo "done."
 
 green_echo "Done with macOS config!"

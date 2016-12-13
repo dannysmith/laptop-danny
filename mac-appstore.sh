@@ -16,10 +16,14 @@ mas install 403388562 # Transmit
 mas install 406825478 # Telephone
 mas install 409789998 # Twitter
 
+green_echo "done."
+
 echo "Outdated Mac App Store Apps:"
 mas outdated
 
 fancy_echo "Upgrading Mac App store Apps.."
 mas upgrade
+
+green_echo "done."
 
 green_echo "Done with Mac App Store installs..."

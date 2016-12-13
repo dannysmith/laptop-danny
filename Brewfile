@@ -44,6 +44,9 @@ brew 'tree'
 brew 'tor'
 brew 'diff-so-fancy'
 brew 'gnupg'
+brew 'gnupg2'
+brew 'srm'
+brew 'doxygen'
 
 # Heroku & GitHub
 brew 'heroku-toolbelt'
@@ -66,7 +69,7 @@ brew "libyaml" # should come after openssl
 brew "nvm"
 brew "rbenv"
 brew "ruby-build"
-brew "ruby-default-gems"
+brew "rbenv-default-gems"
 
 # Databases
 brew "postgres", restart_service: true
@@ -77,6 +80,7 @@ brew "mysql", restart_service: true
 
 # Automation
 brew "chromedriver"
+brew "geckodriver"
 
 # Mac Stuff
 brew 'mas'
@@ -111,7 +115,6 @@ cask 'charles'
 cask 'dropbox'
 cask 'duet'
 cask 'docker'
-cask 'flowstate'
 cask 'goofy'
 cask 'google-drive'
 cask 'grammarly'
@@ -146,7 +149,7 @@ cask 'sublime-text'
 cask 'macdown'
 cask 'java'
 cask 'evernote'
-cask 'mailbuster' # Evernote Mail.app Addon
+cask 'mailbutler' # Evernote Mail.app Addon
 cask 'skype'
 cask 'awaken'
 cask 'cloudy'
@@ -176,4 +179,4 @@ cask 'transmit'
 cask 'utorrent'
 cask 'vlc'
 cask 'recordit'
-
+cask 'tunnelbear'

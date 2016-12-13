@@ -22,6 +22,10 @@ echo "Welcome to Danny's macOS Installer"
 echo "----------------------------------"
 echo
 
+# Set current directory, so we can change back to it in the scripts.
+export LAPTOP_INSTALL_DIR=$(pwd)
+
+
 # Get admin password, email and mac app store passwords
 input_echo "Email Address: "
 read email
@@ -66,6 +70,9 @@ source vim.sh
 
 # Configure sublime text
 source sublime.sh
+
+# Configure Atom
+source atom.sh
 
 # Run mac-specific scripts.
 source macos.sh
